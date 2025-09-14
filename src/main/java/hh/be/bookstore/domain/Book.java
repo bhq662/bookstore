@@ -1,16 +1,18 @@
 package hh.be.bookstore.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Book {
+    @Id
+    private Long isbn;
     private String title;
     private String author;
-    private Long publicationYear;
-    private Long isbn;
+    private int publicationYear;
     private float price;
 
-    public Book(String title, String author, Long publicationYear, Long isbn, float price) {
+    public Book(String title, String author, int publicationYear, Long isbn, float price) {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
@@ -21,7 +23,7 @@ public class Book {
     public Book() {
         this.title = null;
         this.author = null;
-        this.publicationYear = null;
+        this.publicationYear = 0;
         this.isbn = null;
         this.price = 0.0f;
     }
@@ -34,7 +36,7 @@ public class Book {
         this.author = author;
     }
 
-    public void setPublicationYear(Long publicationYear) {
+    public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
 
@@ -54,7 +56,7 @@ public class Book {
         return author;
     }
 
-    public Long getPublicationYear() {
+    public int getPublicationYear() {
         return publicationYear;
     }
 
