@@ -1,5 +1,8 @@
 package hh.be.bookstore.domain;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Book {
     private String title;
     private String author;
@@ -70,5 +73,3 @@ public class Book {
     }
 
 }
-
-// title, author, publicationYear, isbn, price
