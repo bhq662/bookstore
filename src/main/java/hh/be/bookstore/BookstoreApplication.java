@@ -29,6 +29,7 @@ public class BookstoreApplication {
 			System.out
 					.println("Book id= " + b3.getIsbn() + ", title= " + b3.getTitle() + ", author= " + b3.getAuthor());
 		};
+
 	}
 
 }
