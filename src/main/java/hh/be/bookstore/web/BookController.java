@@ -14,8 +14,11 @@ import hh.be.bookstore.domain.BookRepository;
 @Controller
 public class BookController {
 
-    @Autowired
     private BookRepository repository;
+
+    public BookController(BookRepository repository) {
+        this.repository = repository;
+    }
 
     @GetMapping("/index")
     public String getBook(@ModelAttribute Book book, Model model) {
