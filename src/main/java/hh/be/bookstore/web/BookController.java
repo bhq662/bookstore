@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.be.bookstore.domain.Book;
 import hh.be.bookstore.domain.BookRepository;
+import hh.be.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 
-    private BookRepository repository;
+    private BookRepository bRepository;
 
-    public BookController(BookRepository repository) {
-        this.repository = repository;
+    private CategoryRepository cRepository;
+
+    public BookController(BookRepository bRepository, CategoryRepository cRepository) {
+        this.bRepository = bRepository;
+        this.cRepository = cRepository;
     }
 
     @GetMapping("/index")
@@ -27,7 +31,7 @@ public class BookController {
 
     @GetMapping("/booklist")
     public String getBookList(@ModelAttribute Book book, Model model) {
-        model.addAttribute("booklist", repository.findAll());
+        model.addAttribute("booklist", bRepository.findAll());
         return "booklist"; // booklist.html
     }
 
@@ -39,19 +43,19 @@ public class BookController {
 
     @PostMapping("/savebook")
     public String saveBook(@ModelAttribute Book book) {
-        repository.save(book);
+        bRepository.save(book);
         return "redirect:/booklist";
     }
 
     @GetMapping("/editbook/{isbn}")
     public String editBook(@PathVariable Long isbn, Model model) {
-        model.addAttribute("book", repository.findById(isbn).orElse(null));
+        model.addAttribute("book", bRepository.findById(isbn).orElse(null));
         return "editBook";
     }
 
     @GetMapping("/deletebook/{isbn}")
     public String deleteBook(@PathVariable Long isbn, Model model) {
-        repository.deleteById(isbn);
+        bRepository.deleteById(isbn);
         return "redirect:/booklist";
     }
 

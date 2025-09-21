@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Car</title>
+</head>
+
+<body>
+    <h1>New Car</h1>
+    <form action="#" th:action="@{/newcar}" method="post" th:object="${car}">
+        <p>Model: <input type="text" th:field="*{model}"> </p>
+        <p>Year: <input type="text" th:field="*{year}"> </p>
+        <p><input type="submit" value="Send"></p>
+    </form>
+</body>
+
+</html>
