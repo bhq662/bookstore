@@ -33,6 +33,7 @@ public class BookController {
     @GetMapping("/booklist")
     public String getBookList(@ModelAttribute Book book, Model model) {
         model.addAttribute("booklist", bRepository.findAll());
+        model.addAttribute("categorylist", cRepository.findAll());
         return "booklist"; // booklist.html
     }
 

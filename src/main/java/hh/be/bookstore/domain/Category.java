@@ -1,9 +1,14 @@
 package hh.be.bookstore.domain;
 
+import java.util.ArrayList;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Category {
@@ -11,6 +16,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cId;
     private String cName;
+
+    @OneToMany(mappedBy = "category")
+    private List<Book> books = new ArrayList<>();
 
     public Category() {
         this.cId = null;
@@ -22,12 +30,20 @@ public class Category {
         this.cName = cName;
     }
 
+    public List<Book> getBooks() {
+        return books;
+    }
+
     public Long getcId() {
         return cId;
     }
 
     public String getcName() {
         return cName;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public void setcId(Long cId) {
