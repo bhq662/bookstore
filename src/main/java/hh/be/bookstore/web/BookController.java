@@ -40,6 +40,7 @@ public class BookController {
     @GetMapping("/addbook")
     public String createBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categorylist", cRepository.findAll());
         return "addbook"; // addbook.html
     }
 

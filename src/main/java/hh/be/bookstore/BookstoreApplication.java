@@ -21,8 +21,11 @@ public class BookstoreApplication {
 		return (args) -> {
 			System.out.println("Save a few categories");
 			Category c1 = cRepository.save(new Category(null, "Dystopian"));
+			@SuppressWarnings("unused")
 			Category c2 = cRepository.save(new Category(null, "Horror"));
+			@SuppressWarnings("unused")
 			Category c3 = cRepository.save(new Category(null, "Romance"));
+			@SuppressWarnings("unused")
 			Category c4 = cRepository.save(new Category(null, "Fiction"));
 			Category c5 = cRepository.save(new Category(null, "Classics"));
 

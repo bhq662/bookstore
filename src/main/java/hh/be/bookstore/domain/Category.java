@@ -10,6 +10,7 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 @Entity
 public class Category {
     @Id
