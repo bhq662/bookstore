@@ -16,6 +16,7 @@ public class BookController {
 
     private BookRepository bRepository;
 
+    @SuppressWarnings("unused")
     private CategoryRepository cRepository;
 
     public BookController(BookRepository bRepository, CategoryRepository cRepository) {
@@ -38,7 +39,7 @@ public class BookController {
     @GetMapping("/addbook")
     public String createBook(Model model) {
         model.addAttribute("book", new Book());
-        return "addbook"; // create.html
+        return "addbook"; // addbook.html
     }
 
     @PostMapping("/savebook")

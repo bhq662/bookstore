@@ -32,15 +32,15 @@ public class BookstoreApplication {
 					.println("Book id= " + b3.getIsbn() + ", title= " + b3.getTitle() + ", author= " + b3.getAuthor());
 
 			System.out.println("Save a few categories");
-			Category c1 = new Category(null, "Dystopian");
+			Category c1 = cRepository.save(new Category(null, "Dystopian"));
 			System.out.println("Category [id=" + c1.getcId() + ", name=" + c1.getcName() + "]");
-			Category c2 = new Category(null, "Horror");
+			Category c2 = cRepository.save(new Category(null, "Horror"));
 			System.out.println("Category [id=" + c2.getcId() + ", name=" + c2.getcName() + "]");
-			Category c3 = new Category(null, "Romance");
+			Category c3 = cRepository.save(new Category(null, "Romance"));
 			System.out.println("Category [id=" + c3.getcId() + ", name=" + c3.getcName() + "]");
-			Category c4 = new Category(null, "Fiction");
+			Category c4 = cRepository.save(new Category(null, "Fiction"));
 			System.out.println("Category [id=" + c4.getcId() + ", name=" + c4.getcName() + "]");
-			Category c5 = new Category(null, "Classics");
+			Category c5 = cRepository.save(new Category(null, "Classics"));
 			System.out.println("Category [id=" + c5.getcId() + ", name=" + c5.getcName() + "]");
 		};
 	}
