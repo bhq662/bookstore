@@ -15,49 +15,49 @@ import java.util.ArrayList;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long cId;
-    private String cName;
+    private Long categoryId;
+    private String categoryName;
 
     @OneToMany(mappedBy = "category")
     private List<Book> books = new ArrayList<>();
 
     public Category() {
-        this.cId = null;
-        this.cName = null;
+        this.categoryId = null;
+        this.categoryName = null;
     }
 
-    public Category(Long cId, String cName) {
-        this.cId = cId;
-        this.cName = cName;
+    public Category(Long categoryId, String categoryName) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
     }
 
     public List<Book> getBooks() {
         return books;
     }
 
-    public Long getcId() {
-        return cId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public String getcName() {
-        return cName;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public void setBooks(List<Book> books) {
         this.books = books;
     }
 
-    public void setcId(Long cId) {
-        this.cId = cId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public void setcName(String cName) {
-        this.cName = cName;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override
     public String toString() {
-        return "Category [cId=" + cId + ", cName=" + cName + "]";
+        return "Category [categoryId=" + categoryId + ", categoryName=" + categoryName + "]";
     }
 
 }

@@ -16,7 +16,6 @@ public class BookController {
 
     private BookRepository bRepository;
 
-    @SuppressWarnings("unused")
     private CategoryRepository cRepository;
 
     public BookController(BookRepository bRepository, CategoryRepository cRepository) {
@@ -50,15 +49,16 @@ public class BookController {
         return "redirect:/booklist";
     }
 
-    @GetMapping("/editbook/{isbn}")
-    public String editBook(@PathVariable Long isbn, Model model) {
-        model.addAttribute("book", bRepository.findById(isbn).orElse(null));
+    @GetMapping("/editbook/{id}")
+    public String editBook(@PathVariable("id") Long bookId, Model model) {
+        model.addAttribute("book", bRepository.findById(bookId).orElse(null));
+        model.addAttribute("categorylist", cRepository.findAll()); // Add this for the dropdown
         return "editBook";
     }
 
-    @GetMapping("/deletebook/{isbn}")
-    public String deleteBook(@PathVariable Long isbn, Model model) {
-        bRepository.deleteById(isbn);
+    @GetMapping("/deletebook/{id}")
+    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
+        bRepository.deleteById(bookId);
         return "redirect:/booklist";
     }
 

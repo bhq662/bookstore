@@ -4,31 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Book</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+
 </head>
 
 <body>
     <h1>Edit Book</h1>
     <form th:object="${book}" th:action="@{/savebook}" method="post">
-        <!-- Hidden ISBN field -->
-        <input type="hidden" th:field="*{isbn}" readonly="readonly" />
-        <div>
-            <label for="title">Title</label>
-            <input type="text" th:field="*{title}" id="title" />
-        </div>
-        <div>
-            <label for="author">Author</label>
-            <input type="text" th:field="*{author}" id="author" />
-        </div>
-        <div>
-            <label for="publicationYear">Year</label>
-            <input type="number" th:field="*{publicationYear}" id="publicationYear" />
-        </div>
-        <div>
-            <label for="price">Price</label>
-            <input type="number" step="0.01" th:field="*{price}" id="price" />
-        </div>
-        <button type="submit" class="btn btn-success" value="Save">Save</button>
+        <input type="hidden" th:field="*{bookId}" />
+        <label>Title: <input type="text" th:field="*{title}" /></label><br>
+        <label>Author: <input type="text" th:field="*{author}" /></label><br>
+        <label>ISBN: <input type="number" th:field="*{isbn}" /></label><br>
+        <label>Year: <input type="number" th:field="*{publicationYear}" /></label><br>
+        <label>Price: <input type="number" step="0.01" th:field="*{price}" /></label><br>
+        <label>Category:
+            <select th:field="*{category}" class="form-control">
+                <option th:each="cat : ${categorylist}" th:value="${cat}" th:text="${cat.categoryName}"></option>
+            </select>
+        </label><br>
+        <button type="submit" class="btn btn-success">Save</button>
     </form>
+    <a class="btn btn-secondary" th:href="@{/booklist}">Back to list</a>
 </body>
 
 </html>
